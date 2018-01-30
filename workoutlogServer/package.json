@@ -4,12 +4,13 @@
   "descriptoion": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./node_modules/http-server/bin/http-server"
   },
   "author": "Clayton Campbell",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.1",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "pg": "^4.5.7",
     "pg-hstore": "^2.3.2",
