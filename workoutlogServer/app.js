@@ -1,6 +1,15 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+var sequelize = require('./db.js')
+var User = sequelize.import('./models/user.js')
+
+User.sync()
+//*** below deletes the user table when enabled and top disabled.
+// User.sync({force:true})
+//*** 
+
+app.use(bodyParser.json())
 
 app.use(require('./middleware/header')) // draws from created node
 
@@ -11,33 +20,6 @@ app.use('/api/test', function(req, res){
 app.listen(3000, function(){
   console.log("app is open on 3000")
 })
-
-var Sequelize = require('sequelize')
-var sequelize = new Sequelize('workoutlog', 'postgres', 'Cackler22', {
-  host: 'localhost',
-  dialect: 'postgres'
-})
-
-sequelize.authenticate().then(
-  function() {
-    console.log('connected to workoutlog postgres database')
-  },
-  function(err){
-    console.log(err)
-  }
-)
-
-
-//build a user model in sequelize
-var User = sequelize.define('user', {
-      username: Sequelize.STRING,
-      passwordhash: Sequelize.STRING,
-})
-User.sync()
-//*** below deletes the user table when enabled and top disabled.
-// User.sync({force:true})
-//*** 
-app.use(bodyParser.json())
 
 app.post('/api/user', function(req, res) {
   var user = req.body.user.username
