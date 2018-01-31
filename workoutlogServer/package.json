@@ -10,8 +10,10 @@
   "author": "Clayton Campbell",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
     "pg": "^4.5.7",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.31.1"
